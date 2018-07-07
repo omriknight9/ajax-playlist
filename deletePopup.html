@@ -1,0 +1,40 @@
+<div id="deletePopup">
+	<p>Are You Sure?</p>
+	<div class="bottomDeleteBtns">
+		<button class="btn btn-info col-sm-4 cancelBtn">Cancel</button>
+		<button class="btn btn-danger col-sm-4 deleteBtn">Delete</button>
+	</div>
+	
+</div>
+
+<script>
+		
+	$('.deleteBtn').click(function(e) {
+		e.preventDefault();
+		var id = e.target.parentElement.parentElement.dataset.play_id;
+		deletePlaylist(id);
+		$('#popupContainer').remove();
+		$('.playing-div').remove();
+	});
+
+
+	$('.cancelBtn').click(function(e) {
+		e.preventDefault();
+		$('#popupContainer').remove();
+	});
+
+	function deletePlaylist(id) {
+		$.ajax({
+			method: 'DELETE',
+			url: "api/playlist/" + id,
+			success: function(response) {
+			}
+		})
+		.then(function() {
+			var update = new Update()
+			update.initPage()
+		})
+	}
+
+</script>
+
