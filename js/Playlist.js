@@ -67,7 +67,7 @@ class Playlist {
 	registerPlaying() {
 		this.container.find('.playlist-play-btn').click(function(event) {
 			event.preventDefault();
-			  	$("html, body").animate({ scrollTop: 0 }, "slow");
+			  	$("html, body").animate({scrollTop:0}, "slow");
 			var player = new Player(this.id, this.name, this.image);
 		}.bind(this));
 	}
